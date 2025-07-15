@@ -1,0 +1,32 @@
+name: Slack Notification
+
+on:
+  workflow_call:
+    secrets:
+      slack-webhook:
+        required: true
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack Notification
+        env:
+          SLACK_WEBHOOK: ${{ secrets.slack-webhook }}
+          EVENT_NAME: ${{ github.event_name }}
+          ACTOR: ${{ github.actor }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            text="🛎️ *New Pull Request Created!*\n*Title:* $PR_TITLE\n*Author:* $ACTOR\n*Link:* <$PR_URL>"
+          elif [[ "$EVENT_NAME" == "issues" ]]; then
+            text="📝 *New Issue Created!*\n*Title:* $ISSUE_TITLE\n*Author:* $ACTOR\n*Link:* <$ISSUE_URL>"
+          else
+            text="⚠️ Unhandled event: $EVENT_NAME"
+          fi
+
+          payload="{\"text\": \"$text\"}"
+          curl -X POST -H 'Content-type: application/json' --data "$payload" "$SLACK_WEBHOOK"
