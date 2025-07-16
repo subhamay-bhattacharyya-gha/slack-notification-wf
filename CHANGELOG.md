@@ -1,3 +1,11 @@
+# 1.0.0 (2025-07-16)
+
+
+### Features
+
+* Add Slack notification workflow for pull requests and issues ([a753339](https://github.com/subhamay-bhattacharyya-gha/slack-notification-wf/commit/a7533397f84ad9c643dc81e6c5279ba1c70e9816))
+* Update workflows and README for Slack notification action ([ecfad71](https://github.com/subhamay-bhattacharyya-gha/slack-notification-wf/commit/ecfad71124b2401e986802f0809040383f7f0657))
+
 ## [1.1.2](https://github.com/subhamay-bhattacharyya-gha/github-action-template/compare/v1.1.1...v1.1.2) (2025-05-21)
 
 
