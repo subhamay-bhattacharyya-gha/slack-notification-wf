@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/subhamay-bhattacharyya-gha/slack-notification-wf/compare/v1.0.0...v1.0.1) (2025-12-19)
+
+
+### Bug Fixes
+
+* update Node.js setup to use version 22.14.0 and correct action version ([fdfdeca](https://github.com/subhamay-bhattacharyya-gha/slack-notification-wf/commit/fdfdeca33689d7539063e379740bca22088d37f2))
+
 # 1.0.0 (2025-07-16)
 
 
